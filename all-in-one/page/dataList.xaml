@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="all_in_one.dataList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             MinHeight="100" Width="auto">
+    <Grid>
+        <Grid.RowDefinitions  >
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Content="1" x:Name="size" Background="#fff" BorderBrush="#000" ></Label>
+        <ListView x:Name="receiveList" Grid.Row="1" >
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="发件人" DisplayMemberBinding="{Binding Path=Senderuser}" />
+                        <GridViewColumn Header="主题" DisplayMemberBinding="{Binding Path=Topic}" />
+                        <GridViewColumn Header="附件" DisplayMemberBinding="{Binding Path=Ffile}"   />
+                        <GridViewColumn Header="时间" DisplayMemberBinding="{Binding Path=Time}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+   
+</UserControl>

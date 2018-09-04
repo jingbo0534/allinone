@@ -1,0 +1,12 @@
+﻿<Controls:MetroWindow x:Class="all_in_one.MainWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                  Title="MainWindow"
+                  Height="500"
+                  Width="600">
+    <Grid x:Name="mainContent" >
+       
+    </Grid>
+
+</Controls:MetroWindow>
