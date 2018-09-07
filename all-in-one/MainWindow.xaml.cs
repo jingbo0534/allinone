@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Interop;
 using MahApps.Metro.Controls;
 using System.Threading;
+using log4net;
 
 namespace all_in_one
 {
@@ -23,12 +24,15 @@ namespace all_in_one
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        
+        //private log4net.ILog log =log4net.LogManager.GetLogger("MainWindow");
         public MainWindow()
         {
             InitializeComponent();
             var logins = new Logins();
             logins.ParentWindow = this;
             mainContent.Children.Add(logins);
+            //log.Info("init ");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
