@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Fleck;
 using TaxCardX;
+using System.Windows;
 
 namespace MyWebSocketDemo
 {
     class Server1
     {
-        private static TaxCardX.GoldTax GT = new TaxCardX.GoldTax();
+        private static GoldTax GT = new GoldTax();
         private static List<IWebSocketConnection> allSockets;
         private static WebSocketServer server;
         
@@ -57,10 +58,9 @@ namespace MyWebSocketDemo
             
             }
 
-            public void invok(string msg);
+            public void invok(string msg)
             {
                 String GS = GT.RetCode.ToString();
-
                 if (GS.Equals("1011"))
                 {
                     GT.InvInfoInit();//初始化
@@ -70,9 +70,9 @@ namespace MyWebSocketDemo
                     GT.GetInfo();
 
 
-                    textBox2.Text = GT.InfoTypeCode;
+                    //textBox2.Text = GT.InfoTypeCode;
 
-                    textBox1.Text = GT.InfoNumber.ToString();  
+                    //textBox1.Text = GT.InfoNumber.ToString();
 
                     GT.InfoClientName = "开票企业名称";  //购方名称
                     GT.InfoClientTaxCode = "650105999990003"; //购方税号
@@ -114,25 +114,25 @@ namespace MyWebSocketDemo
 
                     GT.Invoice();//发票开具
 
-                    textBox3.Text = GT.InfoNumber.ToString();
+                    //textBox3.Text = GT.InfoNumber.ToString();
 
                     if (GT.RetCode.ToString() == "4001")// 传入发票数据不合法
                     {
-                        MessageBox.Show("传入发票数据不合法", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                       //"传入发票数据不合法", "信息提示";
                     }
                     else if (GT.RetCode.ToString() == "4002")//开票前金税卡状态错误
                     {
-                        MessageBox.Show("开票前金税卡状态错误", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                       // MessageBox.Show("开票前金税卡状态错误", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         //保存发票ToolStripMenuItem.Enabled = false;
                     }
                     else if (GT.RetCode.ToString() == "4003")//金税卡开票调用错误 
                     {
-                        MessageBox.Show("金税卡开票调用错误,请确认组件版本号！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                      //  MessageBox.Show("金税卡开票调用错误,请确认组件版本号！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         //保存发票ToolStripMenuItem.Enabled = false;
                     }
                     else if (GT.RetCode.ToString() == "4004")//开票后金税卡状态错误
                     {
-                        MessageBox.Show("开票后金税卡状态错误", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                       // MessageBox.Show("开票后金税卡状态错误", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         //保存发票ToolStripMenuItem.Enabled = false;
                     }
                     else if (GT.RetCode.ToString() == "4011")//开票成功
@@ -143,11 +143,11 @@ namespace MyWebSocketDemo
 
                         if (GT.RetCode == 5001)
                         {
-                            MessageBox.Show("发票打印失败，失败原因：未找到发票，请先保存发票", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                          //  MessageBox.Show("发票打印失败，失败原因：未找到发票，请先保存发票", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else if (GT.RetCode == 5011)
                         {
-                            MessageBox.Show("发票打印成功！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                          //  MessageBox.Show("发票打印成功！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             //if (GetFPStyle == "发票")
                             //{
                             //    toolStripButton2_Click(null, null);
@@ -155,16 +155,18 @@ namespace MyWebSocketDemo
                         }
                         else if (GT.RetCode == 5012)
                         {
-                            MessageBox.Show("发票打印失败，失败原因：未打印", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                           // MessageBox.Show("发票打印失败，失败原因：未打印", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else if (GT.RetCode == 5013)
                         {
-                            MessageBox.Show("发票打印失败！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                           // MessageBox.Show("发票打印失败！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
-                    return "";
-                }
+
+            }        
+                   
+                
 
             
 
